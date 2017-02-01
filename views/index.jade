@@ -1,0 +1,37 @@
+doctype html
+
+html
+	head
+		title Vib
+		meta(charset='UTF-8')
+		link(href='/main.css' rel='stylesheet')
+		script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+
+	body
+		h1 Vibrate
+		.buttons
+			.btn#ss
+			.mbtn#sm
+				div
+				div
+				div
+		.buttons
+			.btn#ms
+			.mbtn#mm
+				div
+				div
+				div
+		.buttons
+			.btn#ls
+			.mbtn#lm
+				div
+				div
+				div
+		
+		.buttons
+			input#duration(type='number', placeholder='duration')
+			button#custom buzz
+
+		p#support
+
+		script(src='/main.js' type='text/javascript')
