@@ -24,7 +24,7 @@
 		support.innerHTML = 'vibrate not supported';
 	}
 	
-	var socket = io.connect('https://vibrater.herokuapp.com/');
+	var socket = io.connect('https://vibrater.herokuapp.com');
 
 	socket.on('vib', function(data) {
 		navigator.vibrate(data.vib);

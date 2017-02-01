@@ -25,6 +25,7 @@ const io = require('socket.io')(server);
 
 io.on('connection', s => {
 	s.on('signal', data => {
+		console.log(data);
 		s.broadcast.emit(data.type, data);
 	});
 });
