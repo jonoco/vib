@@ -10,6 +10,8 @@
 	var SPEED4 = 300;
 	var SPEED5 = 100;
 
+	var repeat;
+
 	var support = document.getElementById('support');
 	// enable vibration support
 	navigator.vibrate = navigator.vibrate || 
@@ -37,7 +39,7 @@
   });
  
   document.getElementById('sm').addEventListener('click', function(e) {
-		vibrate([SML, SPEED5, SML, SPEED5]);
+		repeatVibrate({delay: 100, duration: 200});
   });
 
 	// medium buzz
@@ -46,7 +48,7 @@
   });
 
   document.getElementById('mm').addEventListener('click', function(e) {
-		vibrate([MED, SPEED3, MED, SPEED3]);
+		repeatVibrate({delay: 300, duration: 500});
   });
 
 	// large buzz
@@ -55,14 +57,27 @@
 	 });
 
   document.getElementById('lm').addEventListener('click', function(e) {
-		vibrate([LRG, SPEED5, LRG, SPEED5]);
+		repeatVibrate({delay: 1000, duration: 3000});
   });
 
   //custom timer
   document.getElementById('custom').addEventListener('click', function(e) {
   	var time = document.getElementById('duration').value;
   	vibrate(Number(time));
-  })
+  });
+
+	// stop repeat
+	document.getElementById('stop').addEventListener('click', function(e) {
+		clearInterval(repeat);
+	});
+
+  function repeatVibrate(pattern) {
+  	clearInterval(repeat);
+  	repeat = setInterval(function() {
+  		console.log('vibrate');
+  		navigator.vibrate(pattern.duration);
+  	}, pattern.delay);
+  }
 
   
   function vibrate(pattern) {
